@@ -53,10 +53,10 @@
 
 ;;add two numbers using Form-2 reagent
 
-(defn add 
+#_(defn add 
   [a b]
   (+ (int @a) (int @b)))
-(defn home []
+#_(defn home []
   (let [ num1 (reagent/atom 0)
          num2 (reagent/atom 0)
          result (reagent/atom 0)]
@@ -86,12 +86,27 @@
                  :value @value
                  :on-change #(reset! value (-> % .-target .-value))}]]))) ;;(-> % .-target .-value)=(.-value (.-target %))
 
+;;Cursors
 
+
+(defn cursors []
+  (let [app-state (reagent/atom {:foo {:bar "Hello, world!"
+                                    :baz {:quux "Woot"}}})
+        foo-cursor (reagent/cursor app-state [:foo])
+        foobar-cursor (reagent/cursor app-state [:foo :bar])
+        foobaz-cursor (reagent/cursor app-state [:foo :baz])
+        foobazquux-cursor (reagent/cursor app-state [:foo :baz :quux])]
+      [:div 
+       [:div (str "Inside app-state: " @app-state)]
+       [:div (str "Inside foo-cursor: " @foo-cursor)]
+       [:div (str "Inside foobar-cursor: " @foobar-cursor)]
+       [:div (str "Inside foobaz-cursor: " @foobaz-cursor)]
+       [:div (str "Inside foobazquux-cursor: " @foobazquux-cursor)]]))
 
    
 
 (defn  main []
-  (reagent/render [home]
+  (reagent/render [cursors]
                   (.getElementById js/document "app")))
 (main)
 

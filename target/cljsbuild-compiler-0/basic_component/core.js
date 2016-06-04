@@ -2,21 +2,15 @@
 goog.provide('basic_component.core');
 goog.require('cljs.core');
 goog.require('reagent.core');
-basic_component.core.home = (function basic_component$core$home(){
-var value = reagent.core.atom.cljs$core$IFn$_invoke$arity$1("hai");
-return ((function (value){
-return (function (){
-return new cljs.core.PersistentVector(null, 3, 5, cljs.core.PersistentVector.EMPTY_NODE, [cljs.core.cst$kw$div,new cljs.core.PersistentVector(null, 3, 5, cljs.core.PersistentVector.EMPTY_NODE, [cljs.core.cst$kw$div,"changed value: ",(cljs.core.deref.cljs$core$IFn$_invoke$arity$1 ? cljs.core.deref.cljs$core$IFn$_invoke$arity$1(value) : cljs.core.deref.call(null,value))], null),new cljs.core.PersistentVector(null, 2, 5, cljs.core.PersistentVector.EMPTY_NODE, [cljs.core.cst$kw$input,new cljs.core.PersistentArrayMap(null, 3, [cljs.core.cst$kw$type,"text",cljs.core.cst$kw$value,(cljs.core.deref.cljs$core$IFn$_invoke$arity$1 ? cljs.core.deref.cljs$core$IFn$_invoke$arity$1(value) : cljs.core.deref.call(null,value)),cljs.core.cst$kw$on_DASH_change,((function (value){
-return (function (p1__7805_SHARP_){
-var G__7808 = value;
-var G__7809 = p1__7805_SHARP_.target.value;
-return (cljs.core.reset_BANG_.cljs$core$IFn$_invoke$arity$2 ? cljs.core.reset_BANG_.cljs$core$IFn$_invoke$arity$2(G__7808,G__7809) : cljs.core.reset_BANG_.call(null,G__7808,G__7809));
-});})(value))
-], null)], null)], null);
-});
-;})(value))
+basic_component.core.cursors = (function basic_component$core$cursors(){
+var app_state = reagent.core.atom.cljs$core$IFn$_invoke$arity$1(new cljs.core.PersistentArrayMap(null, 1, [cljs.core.cst$kw$foo,new cljs.core.PersistentArrayMap(null, 2, [cljs.core.cst$kw$bar,"Hello, world!",cljs.core.cst$kw$baz,new cljs.core.PersistentArrayMap(null, 1, [cljs.core.cst$kw$quux,"Woot"], null)], null)], null));
+var foo_cursor = reagent.core.cursor(app_state,new cljs.core.PersistentVector(null, 1, 5, cljs.core.PersistentVector.EMPTY_NODE, [cljs.core.cst$kw$foo], null));
+var foobar_cursor = reagent.core.cursor(app_state,new cljs.core.PersistentVector(null, 2, 5, cljs.core.PersistentVector.EMPTY_NODE, [cljs.core.cst$kw$foo,cljs.core.cst$kw$bar], null));
+var foobaz_cursor = reagent.core.cursor(app_state,new cljs.core.PersistentVector(null, 2, 5, cljs.core.PersistentVector.EMPTY_NODE, [cljs.core.cst$kw$foo,cljs.core.cst$kw$baz], null));
+var foobazquux_cursor = reagent.core.cursor(app_state,new cljs.core.PersistentVector(null, 3, 5, cljs.core.PersistentVector.EMPTY_NODE, [cljs.core.cst$kw$foo,cljs.core.cst$kw$baz,cljs.core.cst$kw$quux], null));
+return new cljs.core.PersistentVector(null, 6, 5, cljs.core.PersistentVector.EMPTY_NODE, [cljs.core.cst$kw$div,new cljs.core.PersistentVector(null, 2, 5, cljs.core.PersistentVector.EMPTY_NODE, [cljs.core.cst$kw$div,[cljs.core.str("Inside app-state: "),cljs.core.str((cljs.core.deref.cljs$core$IFn$_invoke$arity$1 ? cljs.core.deref.cljs$core$IFn$_invoke$arity$1(app_state) : cljs.core.deref.call(null,app_state)))].join('')], null),new cljs.core.PersistentVector(null, 2, 5, cljs.core.PersistentVector.EMPTY_NODE, [cljs.core.cst$kw$div,[cljs.core.str("Inside foo-cursor: "),cljs.core.str((cljs.core.deref.cljs$core$IFn$_invoke$arity$1 ? cljs.core.deref.cljs$core$IFn$_invoke$arity$1(foo_cursor) : cljs.core.deref.call(null,foo_cursor)))].join('')], null),new cljs.core.PersistentVector(null, 2, 5, cljs.core.PersistentVector.EMPTY_NODE, [cljs.core.cst$kw$div,[cljs.core.str("Inside foobar-cursor: "),cljs.core.str((cljs.core.deref.cljs$core$IFn$_invoke$arity$1 ? cljs.core.deref.cljs$core$IFn$_invoke$arity$1(foobar_cursor) : cljs.core.deref.call(null,foobar_cursor)))].join('')], null),new cljs.core.PersistentVector(null, 2, 5, cljs.core.PersistentVector.EMPTY_NODE, [cljs.core.cst$kw$div,[cljs.core.str("Inside foobaz-cursor: "),cljs.core.str((cljs.core.deref.cljs$core$IFn$_invoke$arity$1 ? cljs.core.deref.cljs$core$IFn$_invoke$arity$1(foobaz_cursor) : cljs.core.deref.call(null,foobaz_cursor)))].join('')], null),new cljs.core.PersistentVector(null, 2, 5, cljs.core.PersistentVector.EMPTY_NODE, [cljs.core.cst$kw$div,[cljs.core.str("Inside foobazquux-cursor: "),cljs.core.str((cljs.core.deref.cljs$core$IFn$_invoke$arity$1 ? cljs.core.deref.cljs$core$IFn$_invoke$arity$1(foobazquux_cursor) : cljs.core.deref.call(null,foobazquux_cursor)))].join('')], null)], null);
 });
 basic_component.core.main = (function basic_component$core$main(){
-return reagent.core.render.cljs$core$IFn$_invoke$arity$2(new cljs.core.PersistentVector(null, 1, 5, cljs.core.PersistentVector.EMPTY_NODE, [basic_component.core.home], null),document.getElementById("app"));
+return reagent.core.render.cljs$core$IFn$_invoke$arity$2(new cljs.core.PersistentVector(null, 1, 5, cljs.core.PersistentVector.EMPTY_NODE, [basic_component.core.cursors], null),document.getElementById("app"));
 });
 basic_component.core.main();
