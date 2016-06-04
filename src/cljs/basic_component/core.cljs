@@ -25,9 +25,11 @@
 
 ;;Component-level state
 
+
+
 #_(defn foo [] 
   "Form-2 function that returns function" 
-  (let [count (atom 0)] 
+  (let [count (reagent/atom 0)] 
     (fn []  
       [:div 
        [:p {:style {:color "blue"}} "Reagent Form-2"]
@@ -51,26 +53,31 @@
 
 ;;add two numbers using Form-2 reagent
 
-#_(defn add [a b]
-  (let [x (js/parseFloat (.-value a))
-        y (js/parseFloat (.-value b))
-        s (js/document.getElementById "res")]
-     (set! (.-innerHTML s) (+ x y))))
-#_(defn home[]
-  (fn [] 
-    [:div
-     [:input {:type "text"
-              :id "num1"
-              :size 5}]
-     [:input {:type "text"
-              :id "num2"
-              :size 5}]
-     [:button {:on-click #(add (js/document.getElementById "num1") (js/document.getElementById "num2"))} "Addition"]
-     [:div {:id "res"}]])) 
-
+(defn add 
+  [a b]
+  (+ (int @a) (int @b)))
+(defn home []
+  (let [ num1 (reagent/atom 0)
+         num2 (reagent/atom 0)
+         result (reagent/atom 0)]
+     (fn []
+        [:div
+         [:span
+          [:input {:type "text"
+                   :value @num1
+                   :on-change #(reset! num1 (-> % .-target .-value))}]
+          [:input {:type "text"
+                   :value @num2
+                   :on-change #(reset! num2 (-> % .-target .-value))}]]
+         [:div
+          [:p "Diff : " (- (int @num1) (int @num2))]]
+         [:div
+          [:button {:on-click #(reset! result (add num1 num2))} "Add"]]
+         [:div
+          [:p "Sum : " @result]]])))
 
 ;;function returns function(form-2)
-(defn home []
+#_(defn home []
   (let [value (reagent/atom "hai")]
      (fn []
        [:div 
